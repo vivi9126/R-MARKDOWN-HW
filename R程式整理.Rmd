@@ -3,11 +3,43 @@ title: "R程式整理"
 output: html_document
 ---
 ### 基本函數運用
+
+#### 1.
 Use seq() and rep() to write codes for the following questions:  
 (a) Construct a vector as the same output as:  
-1 2 3 4 5 2 3 4 5 6 3 4 5 6 7 4 5 6 7 8 5 6 7 8 9  
-(b) Construct a vector as the same output as:  
 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5  
-(c) Construct a vector as the same output as:  
+<font color=Blue>## b<- rep(c(1:5),5)創建向量b</font>  
+(b) Construct a vector as the same output as:  
 0 0 0 0 0 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4  
-(d) Let more.color be defined as follows：  
+<font color=Blue>## c<-rep(seq(0,4),rep(5,5))創建向量c</font>  
+(c) Construct a vector as the same output as:  
+1 2 3 4 5 2 3 4 5 6 3 4 5 6 7 4 5 6 7 8 5 6 7 8 9  
+<font color=Blue>## a<-c(b+c)向量a是向量b加向量c</font>  
+(d) Let more.color be defined as follows:more.colors->c("red","yellow","blue","green","magenta","cyan")  
+Use more.color, seq(), and rep() to create a vector as follows:"red" "yellow" "blue" "yellow" "blue" "green"
+"blue" "green" "magenta" "green" "magenta" "cyan".Give the name “color.vec” to this created vector.  
+<font color=Blue>## more.colors<-c("red","yellow","blue","green","magenta","cyan")  
+## color.vec<-c(more.colors[c(seq(1,3),seq(2,4),seq(3,5),seq(4,6))])利用索引創建color.vec向量  
+## color.vec</font>  
+(e) According to (d), how many colors in color.vec?  
+<font color=Blue>## unique(color.vec)共6種</font>  
+(f) According to (d), how many times does each color appear in color.vec?  
+<font color=Blue>## table(color.vec) answer:blue 3 cyan 1 green 3 magenta 2 red 1 yellow 2</font>  
+(g) Rearrange the order in color.vec by letting the first letter from z to a.  
+<font color=Blue>## sort(color.vec,decreasing=TRUE)反向排序</font>  
+
+#### 2.
+Use seq(), rep(), and vector calculation in R to write codes for the following questions.   
+(a) Calculate the values of $\Sigma_{j=1}^n j^2$ when n = 200, 400, 600, 800.  
+<font color=Blue>## n$_1$<-200   
+a<-seq(1:n$_1$)   
+b$_1$_200<-sum(a$\cdot$a)   
+b$_1$_200   
+#2686700以此類推</font>   
+(b) Calculate the values of n(n+1)(2n+1)/6 when n = 200, 400, 600, 800.    
+<font color=Blue>## n$_2$<-200   
+b$_2$_200<-n$_2$(n$_2$+1)(2n$_2$+1)/6   
+b$_2$_200   
+#2686700以此類推</font>    
+(c) Check if the values of (a) and (b) are the same.   
+<font color=Blue>## all.equal(b$_1$_200,b$_2$_200) #TRUE以此類推</font> 
