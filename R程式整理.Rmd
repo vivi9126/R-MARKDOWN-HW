@@ -8,18 +8,18 @@ output: html_document
 Use seq() and rep() to write codes for the following questions:  
 (a) Construct a vector as the same output as:  
 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5  
-<font color=Blue>## b<- rep(c(1:5),5)創建向量b</font>  
+<font color=Blue>## b<- rep(c(1:5),5)(創建向量b)</font>  
 (b) Construct a vector as the same output as:  
 0 0 0 0 0 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4  
-<font color=Blue>## c<-rep(seq(0,4),rep(5,5))創建向量c</font>  
+<font color=Blue>## c<-rep(seq(0,4),rep(5,5))(創建向量)c</font>  
 (c) Construct a vector as the same output as:  
 1 2 3 4 5 2 3 4 5 6 3 4 5 6 7 4 5 6 7 8 5 6 7 8 9  
-<font color=Blue>## a<-c(b+c)向量a是向量b加向量c</font>  
+<font color=Blue>## a<-c(b+c)(向量a是向量b加向量c)</font>  
 (d) Let more.color be defined as follows:more.colors->c("red","yellow","blue","green","magenta","cyan")  
 Use more.color, seq(), and rep() to create a vector as follows:"red" "yellow" "blue" "yellow" "blue" "green"
 "blue" "green" "magenta" "green" "magenta" "cyan".Give the name “color.vec” to this created vector.  
 <font color=Blue>## more.colors<-c("red","yellow","blue","green","magenta","cyan")  
-## color.vec<-c(more.colors[c(seq(1,3),seq(2,4),seq(3,5),seq(4,6))])利用索引創建color.vec向量  
+## color.vec<-c(more.colors[c(seq(1,3),seq(2,4),seq(3,5),seq(4,6))])(利用索引創建color.vec向量)  
 ## color.vec</font>  
 (e) According to (d), how many colors in color.vec?  
 <font color=Blue>## unique(color.vec)共6種</font>  
@@ -42,4 +42,31 @@ b$_2$_200<-n$_2$(n$_2$+1)(2n$_2$+1)/6
 b$_2$_200   
 #2686700以此類推</font>    
 (c) Check if the values of (a) and (b) are the same.   
-<font color=Blue>## all.equal(b$_1$_200,b$_2$_200) #TRUE以此類推</font> 
+<font color=Blue>## all.equal(b$_1$_200,b$_2$_200)  
+#TRUE以此類推</font>   
+
+#### 3.
+score0 <- c(81.2, 89.6, 64.2, 91.3, 77.4, 84.5, NA, 91.7, 63.5, 84.8,
+NA, 87.8, 87.9, 80.9, 74.8, 64.3, 78.7, 91.3, 76.9, 74.9, 87.6, 88.4)  
+(a) Typing mean(score0) and max(score0), what results do you get?  
+<font color=Blue># NA and NA</font>  
+(b) How to modify mean() and max() so that you can get the numeric answers?  
+<font color=Blue>## mean(score0,na.rm=TRUE) and max(score0,na.rm=TRUE)</font>  
+(c) Delete NA from the vector score0 and assign the name score1 to the new vector.
+What do you get if you type mean(score1) and max(score1)? Are the answers
+the same as those in (b)?  
+<font color=Blue>## score1<-na.omit(score0)  
+mean(score1) #81.085  
+max(score1) #91.7  
+Yes.They are same.</font>  
+(d) If I obtain two scores, 67.2 and 89.5, try to change the values in score0 from NA to
+67.2 and 89.5, and assign the name score2 to the new vector.  
+<font color=Blue>## a<-which(is.na(score0))  
+score2<-score0  
+score2[a]<-c(67.2,89.5)  
+score2</font>  
+(e) What do you get if you type mean(score2) and max(score2)?   
+<font color=Blue>## mean(score2) #80.83636  
+max(score2) #91.7</font>
+
+### 矩陣應用
