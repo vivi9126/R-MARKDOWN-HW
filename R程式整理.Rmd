@@ -10,3 +10,4 @@ Use seq() and rep() to write codes for the following questions:
 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5  
 (c) Construct a vector as the same output as:  
 0 0 0 0 0 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4  
+(d) Let more.color be defined as follows：  
