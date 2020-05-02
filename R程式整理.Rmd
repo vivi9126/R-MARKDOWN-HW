@@ -69,4 +69,183 @@ score2</font>
 <font color=Blue>## mean(score2) #80.83636  
 max(score2) #91.7</font>
 
-### 矩陣應用
+### 矩陣運用
+#### 1.
+Rolling two fair dices, evaluate the total number that all possible outcomes occur at least once. The events are as follows, and each row has two outcomes of dices.  
+two.dice <- matrix( c(3, 5, 5, 4, 4, 3, 4, 5, 5, 2, 3, 2, 6, 6, 6,  
+                      3, 6, 2, 1, 2, 5, 6, 1, 5, 6, 1, 3, 6, 6, 3,  
+                      5, 3, 3, 5, 3, 3, 4, 2, 1, 4, 3, 1, 5, 1, 6,  
+                      4, 5, 5, 3, 5, 2, 2, 1, 2, 2, 6, 1, 3, 4, 5,  
+                      6, 4, 3, 3, 6, 1, 2, 1, 4, 5, 1, 1, 2, 3, 6,  
+                      5, 6, 5, 3, 1, 4, 1, 5, 2, 2, 6, 3, 2, 3, 1,  
+                      5, 1, 2, 5, 1, 1, 1, 3, 1, 3, 4, 1, 6, 5, 1,  
+                      5, 6, 6, 5, 5, 2, 4, 1, 3, 5, 2, 1, 1, 1, 1), ncol = 2)  
+<font color=Blue>##                         
+dicesum<-matrix(two.dice[,1]+two.dice[,2])  
+n<-length(dicesum)  
+number<-c()  
+for (i in 1:n){  
+&emsp;if (dicesum[i] %in% number==FALSE){  
+&emsp;&emsp;number<-c(number,dicesum[i])  
+&emsp;&emsp;if (length(number)==11){  
+&emsp;&emsp;&emsp;break  
+&emsp;&emsp;}  
+&emsp;}  
+}  
+i  
+#43</font>  
+
+### for迴圈
+#### 1.  
+Let U$_1$,……, U$_k$ be from a uniform(0,1). Define  
+N=max{n:$\prod^n_{i=1} U_i>10^{-8}$}  
+What is the value of N if you use the following sequence?
+U <- c(0.89, 0.03, 0.52, 0.41, 0.09, 0.37, 0.71, 0.29, 0.01, 0.92,0.53, 0.14, 0.64, 0.94, 0.89, 0.19, 0.33, 0.31, 0.24, 0.15)  
+<font color=Blue>##  
+U <- c(0.89, 0.03, 0.52, 0.41, 0.09, 0.37, 0.71, 0.29, 0.01, 0.92,0.53, 0.14, 0.64, 0.94, 0.89, 0.19, 0.33, 0.31, 0.24, 0.15)  
+n<-length(U)  
+b<-c()  
+for (i in 1:n){  
+&emsp;x<-prod(U[1:i])  
+&emsp;if (x>10^(-8)) {  
+&emsp;&emsp;b<-c(b,i)  
+&emsp;}  
+}  
+max(b)  
+#15</font>   
+
+#### 2.  
+Collect students’ scores of math and English as follows:  
+Math <- c(79, 61, 76, 40, 51, 98, 48, 34, 54, 51, 45, 61, 75, 42, 32,61, 56, 82, 22, 33, 19, 60, 91, 49, 44)  
+English <- c(87, 54, 96, 63, 58, 75, 60, 74, 46, 94, 57, 69, 69, 55, 79,94, 72, 86, 85, 56, 62, 77, 78, 62, 56)  
+(a) Construct a matrix with two columns to collect these scores. The first column is for math and the second column is for English. Assign the names for the columns as “Math” and “English”, respectively,and assign the ID numbers for the rows from 1 to the total number of the students. Assign the name tothe matrix as “scores”.  
+<font color=Blue>##  
+Math<-c(79,61,76,40,51,98,48,34,54,51,45,61,75,42,32,61,56,82,22,33,19,60,91,49,44)  
+English<-c(87,54,96,63,58,75,60,74,46,94,57,69,69,55,79,94,72,86,85,56,62,77,78,62,56)  
+scores<-cbind(Math,English)  
+colnames(scores)<-c("Math","English")  
+a<-length(Math)  
+rownames(scores)<-c(1:a)  
+scores</font>  
+(b) Classify the students by the scores. Define the student passes the class if the score is greater or equal to 60, and the student gets a fail if the score is less than 60. Summarize the number of each of the
+following event:    
+A: Math ≥ 60 and English ≥ 60;  
+B: Math ≥ 60 and English < 60;  
+C: Math < 60 and English ≥ 60;  
+D: Math < 60 and English < 60.  
+<font color=Blue>##  
+A<-0,B<-0,C<-0,D<-0  
+for (i in 1:a){    
+&emsp;if (scores[i,1]>=60 & scores[i,2]>=60){  
+&emsp;&emsp;A<-A+1  
+&emsp;}  
+&emsp;else if (scores[i,1]>=60 & scores[i,2]<60){  
+&emsp;&emsp;B<-B+1  
+&emsp;}  
+&emsp;else if (scores[i,1]<60 & scores[i,2]>=60){  
+&emsp;&emsp;C<-C+1  
+&emsp;}  
+&emsp;else if (scores[i,1]<60 & scores[i,2]<60){  
+&emsp;&emsp;D<-D+1  
+&emsp;}  
+}  
+A # 9  
+B # 1  
+C # 9  
+D # 6</font>  
+(c) Provide the students’ ID numbers in each category (A, B, C, D).  
+<font color=Blue>##  
+A<-c(),B<-c(),C<-c(),D<-c()  
+for (i in 1:a){  
+&emsp;if (scores[i,1]>=60 & scores[i,2]>=60){  
+&emsp;&emsp;A<-c(A,i)  
+&emsp;}  
+&emsp;else if (scores[i,1]>=60 & scores[i,2]<60){  
+&emsp;&emsp;B<-c(B,i)  
+&emsp;}  
+&emsp;else if (scores[i,1]<60 & scores[i,2]>=60){  
+&emsp;&emsp;C<-c(C,i)  
+&emsp;}  
+&emsp;else if (scores[i,1]<60 & scores[i,2]<60){  
+&emsp;&emsp;D<-c(D,i)  
+&emsp;}  
+}  
+A # 1 3 6 12 13 16 18 22 23  
+B # 2  
+C # 4 7 8 10 15 17 19 21 24  
+D # 5 9 11 14 20 25</font>    
+
+#### 3.  
+When you enter a vector including {5, 10, 11, 1, 0, 3, 8, 10, 4, 0, 1, 6, 7, 10, 7, 0}, treat 0 as a missing value.  
+Delete all missing values and evaluate the following questions:  
+(1) Sum of the values in the vector;  
+(2) The length of the input vector;  
+(3) The average of the values in the vector;  
+(4) The number of odd values in the vector;  
+(5) The number of 10 in the vector;  
+(6) The maximum of the values in the vector.  
+Apply the code to the vector {7, 5, 0, 1, 2, 7, 1, 10, 5, 0, 3, 7, 2, 3, 3} and print the results from (1) to (6).  
+<font color=Blue>##  
+data1<-c(7, 5, 0, 1, 2, 7, 1, 10, 5, 0, 3, 7, 2, 3, 3)    
+c=which(data1==0)  
+data1=data1[-c]  
+odd1<-c()  
+for (i in data1){  
+&emsp;if (i%%2!=0){  
+&emsp;&emsp;odd1<-c(odd1,i)  
+&emsp;}  
+}  
+d=which(data1==10)  
+cat("(1) Sum:",sum(data1),"\n(2) length:",length(data1),"\n(3) Average:",mean(data1),"\n(4) # of odd:",length(odd1),"\n(5) # of 10:",length(d),"\n(6) Max:",max(data1))</font>      
+
+### R Markdown符號表示
+Write Rmarkdown codes to provide the expression of probability density function (pdf) or probability mass function (pmf) of the following distribution.   
+(a) Binomial distribution with parameters n and p with x = 0, …, n.  
+<font color=Blue>$$C_{x}^{n} p^{x} (1-p)^{n-x}$$</font>
+(b) Gamma distribution with shape parameter $\alpha$ and the rate parameter $\lambda$ with  x>0.
+<font color=Blue>$${x^{\alpha-1}} {e^{-x/\lambda}\over \Gamma(\alpha) \lambda^\alpha}$$</font>  
+(c) Normal distribution with parameters $\mu$ and $\sigma^2$ with −∞ < x < ∞.
+<font color=Blue>$${1\over\sigma \sqrt{2 \pi}}{e^{-(x-\mu^2)\over2 \sigma^2}} $$</font>  
+
+### R Markdown幾率分配圖
+Draw the pdf (or pmf) of each distribution in the questionbefore. Write codes and use all control argument in plot(…) and par(…) to show the following plots. 
+```{r, fig.width = 10, fig.height = 8}
+ par(mfrow=c(2,2))
+##1
+ plot(c(0:10),dbinom(c(0:10),10,0.7),xlim=c(0,10),ylim=c(0.0,0.4),pch=19,col="black",main=expression(paste("Binomial(n,p)with n=10")),xlab="x",ylab="pmf")
+ points(c(0:10),dbinom(c(0:10),10,0.5),xlim=c(0,10),ylim=c(0.0,0.4),pch=8,col="blue")
+ points(c(0:10),dbinom(c(0:10),10,0.2),xlim=c(0,10),ylim=c(0.0,0.4),pch=17,col="red")
+ segments(x0=c(0:10),y0=0.0,x1=c(0:10),y1=dbinom(c(0:10),10,0.7),xlim=c(0,10),ylim=c(0.0,0.4),lty=1,col="black")
+ segments(x0=c(0:10),y0=0.0,x1=c(0:10),y1=dbinom(c(0:10),10,0.5),xlim=c(0,10),ylim=c(0.0,0.4),lty=4,col="blue")
+ segments(x0=c(0:10),y0=0.0,x1=c(0:10),y1=dbinom(c(0:10),10,0.2),xlim=c(0,10),ylim=c(0.0,0.4),lty=2,col="red")
+ legend("topright", legend = c("p=0.7", "p=0.5", "p=0.2"),
+ pch = c(19, 8, 17), lty = c(1, 4, 2),
+ col = c("black", "blue","red"), text.col = c(1,1,1))
+ 
+##2
+ curve(dgamma(x,1,3), 0, 5,ylim=c(0.0,3.0),lty=1,col="black",main=expression(paste("Gamma(",alpha,",", lambda,")with",lambda,"=3")),ylab="pdf")
+ curve(dgamma(x,2,3), 0, 5,ylim=c(0.0,3.0),add=TRUE,lty=2,col="red")
+ curve(dgamma(x,3,3), 0, 5,ylim=c(0.0,3.0),add=TRUE,lty=4,col="blue")
+ curve(dgamma(x,5,3), 0, 5,ylim=c(0.0,3.0),add=TRUE,lty=5,col="grey")
+ legend("topright", legend = c(expression(paste(alpha,"=1")),expression(paste(alpha,"=2")),expression(paste(alpha,"=3")),expression(paste(alpha,"=5"))),
+lty = c(1,2,4,5),
+ col = c("black", "red","blue","grey"), text.col = c(1,1,1,1))
+
+##3 
+ curve(dnorm(x,5,sd=1),0,20, col="black",lty=1,main=expression(paste("N(",mu,",", sigma^2,")with",sigma^2,"=1")),ylab="pdf")
+ curve(dnorm(x,10,sd=1),0,20, col="red", add=TRUE,lty=2)
+ curve(dnorm(x,12,sd=1),0,20, col="blue", add=TRUE,lty=4)
+ curve(dnorm(x,14,sd=1),0,20, col="grey", add=TRUE,lty=5)
+ legend("topright", legend = c(expression(paste(mu,"=5")),expression(paste(mu,"=10")),expression(paste(mu,"=12")),expression(paste(mu,"=14"))),
+lty = c(1,2,4,5),
+ col = c("black", "red","blue","grey"), text.col = c(1,1,1,1))
+
+##4
+ curve(dnorm(x,0,sd=0.5),-9,9, col="black",lty=1,main=expression(paste("N(",mu,",", sigma^2,")with",mu,"=0")),ylab="pdf")
+ curve(dnorm(x,0,sd=1),-9,9, col="red", add=TRUE,lty=2)
+ curve(dnorm(x,0,sd=2),-9,9, col="blue", add=TRUE,lty=4)
+ curve(dnorm(x,0,sd=3),-9,9, col="grey", add=TRUE,lty=5)
+ legend("topright", legend = c(expression(paste(sigma,"=0.5")),expression(paste(sigma,"=1")),expression(paste(sigma,"=2")),expression(paste(sigma,"=3"))),
+lty = c(1,2,4,5),
+ col = c("black", "red","blue","grey"), text.col = c(1,1,1,1))
+```
